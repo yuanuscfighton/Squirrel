@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2022/2/15 9:48 PM -->
+  <title>2-使用js创建虚拟DOM</title>
+</head>
+<body>
+  <!-- 准备好一个容器 -->
+  <div id = "my_react_container_id"></div>
+
+  <!-- 引入react核心库(核心库必须最先引入) -->
+  <script type = "text/javascript" src = "../js/react.development.js"></script>
+  <!-- 引入react-dom，作用: 支持React操作DOM -->
+  <script type = "text/javascript" src = "../js/react-dom.development.js"></script>
+  <!-- 引入babel，作用: 1.用于将jsx转为js，2.es6转成es5 -->
+  <script type = "text/javascript" src = "../js/babel.min.js"></script>
+
+  <!-- 此处一定要写babel，为了表示这里写的是jsx，而不是js，并且需要依赖babel进行翻译 -->
+  <script type = "text/babel">
+    // 1.创建虚拟DOM
+    // React.createElement(标签名, 标签属性, 标签内容);
+    const VDOM = React.createElement('h1', {id: 'title'}, '<h1>Hello, React</h1>')
+    // 2.渲染虚拟DOM到页面
+    // ReactDOM.render(想要渲染哪个DOM, 容器)
+    ReactDOM.render(VDOM, document.getElementById('my_react_container_id'));
+
+  </script>
+
+
+</body>
+</html>
