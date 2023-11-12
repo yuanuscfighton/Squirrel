@@ -24,13 +24,13 @@
     // 组件中包含: 结构(html)，样式(css)，交互(js) 等其它资源。
     // 一个组件最起码需要有结构(html)，所以得让函数有返回值
     function MyComponent() {
-      console.log(this); // 打印:undefined，因为babel编译后开启了严格模式
+      console.log(this); // 打印:undefined。因为babel编译后开启了严格模式
       // 严格模式:禁止自定义函数中的this指向window
       return <h2>我是用函数定义的组件(适用于简单组件的定义)</h2>
     }
 
     // 第2步:渲染组件到页面
-    // 由React帮你调用MyComponent函数
+    // 由React帮你调用MyComponent函数 ← 这里并没有写成 MyComponent() 代码
     ReactDOM.render(<MyComponent/>, document.getElementById('test'));
 
     // 错误1❌
@@ -43,7 +43,7 @@
     // The tag <myComponent> is unrecognized in this browser.
     // If you meant to render a React component, start its name with an uppercase letter in myComponent
     // 若小写字母开头，则将该标签转为html中同名元素。若html中无该标签对应的同名元素，则报错
-    ReactDOM.render(<myComponent/>, document.getElementById('test'));
+    // ReactDOM.render(<myComponent/>, document.getElementById('test'));
 
     /**
      * 执行了 ReactDOM.render(<MyComponent/>...); 之后，发生了什么
