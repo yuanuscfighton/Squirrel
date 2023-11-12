@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2023/11/10 08:12 -->
+  <title>js语法规则</title>
+  <style>
+    .title {
+      background-color: antiquewhite;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 准备好一个容器 -->
+  <div id = "my_react_container_id"></div>
+
+  <!-- 引入react核心库(核心库必须最先引入) -->
+  <script type = "text/javascript" src = "../js/react.development.js"></script>
+  <!-- 引入react-dom，作用: 支持React操作DOM -->
+  <script type = "text/javascript" src = "../js/react-dom.development.js"></script>
+  <!-- 引入babel，作用: 1.用于将jsx转为js，2.es6转成es5 -->
+  <script type = "text/javascript" src = "../js/babel.min.js"></script>
+
+  <!-- 此处一定要写babel，为了表示这里写的是jsx，而不是js，并且需要依赖babel进行翻译 -->
+  <script type = "text/babel">
+
+    // const VDOM = (
+    //   <h2 id="atguigu">
+    //     <span>hello react</span>
+    //   </h2>
+    // )
+
+
+    const myId = "atguigu";
+    const myData = "hello react";
+
+    const VDOM = (
+      <h2 className = "title" id = {myId}>
+        <span style = {{color: 'white', fontSize: '29px'}}>{myData}</span>
+      </h2>
+    )
+
+
+    // 渲染虚拟DOM到页面
+    // ReactDOM.render(想要渲染哪个DOM, 容器)
+    ReactDOM.render(VDOM, document.getElementById('my_react_container_id'));
+
+  </script>
+</body>
+</html>
