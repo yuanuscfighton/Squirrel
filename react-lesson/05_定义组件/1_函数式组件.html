@@ -33,22 +33,29 @@
     // 由React帮你调用MyComponent函数 ← 这里并没有写成 MyComponent() 代码
     ReactDOM.render(<MyComponent/>, document.getElementById('test'));
 
+
     // 错误1❌
+    // 错误代码：ReactDOM.render(myComponent, document.getElementById('test'));
+    // 错误信息：
     // Functions are not valid as a React child.
     // This may happen if you return a Component instead of <Component /> from render.
     // Or maybe you meant to call this function rather than return it.
     // ReactDOM.render(MyComponent, document.getElementById('test'));
 
     // 错误2❌
+    // 错误代码：ReactDOM.render(<myComponent/>, document.getElementById('test'));
+    // 错误信息：
     // The tag <myComponent> is unrecognized in this browser.
     // If you meant to render a React component, start its name with an uppercase letter in myComponent
     // 若小写字母开头，则将该标签转为html中同名元素。若html中无该标签对应的同名元素，则报错
     // ReactDOM.render(<myComponent/>, document.getElementById('test'));
 
+    /////////////////////////////////////////////////////////////////////////////////
     /**
      * 执行了 ReactDOM.render(<MyComponent/>...); 之后，发生了什么
-     * （1）React解析组件标签，找到MyComponent组件
+     * （1）React解析组件标签，找到MyComponent组件，
      * （2）发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为真实DOM，随后呈现在页面中。
+     * React帮你调用的MyComponent函数，这里提到的调用就是指调用函数，e.g.MyComponent()
      */
   </script>
 
