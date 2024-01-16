@@ -3,7 +3,7 @@
 <head>
   <meta charset = "UTF-8">
   <!-- Create 2022/3/18 8:29 PM -->
-  <title>2_类中的方法this指向</title>
+  <title>3_类中的方法this指向</title>
 </head>
 <body>
   <script type = "text/javascript">
@@ -37,7 +37,6 @@
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
     // 类中所有定义的方法，在局部都开启了严格模式(这是类帮忙开启的，和babel没有关系)，所以this不指向window和类的实例
-    // 即
     function demo() {
       console.log(this);
     }
@@ -46,10 +45,14 @@
 
     function demo1() {
       'use strict' // 局部的严格模式
-      console.log(this);
+      console.log("demo1：" + this);
     }
-
     demo1(); // undefined
+
+    function demo2() {
+      console.log("demo2：" + this);
+    }
+    demo2(); // this指向Window
 
   </script>
 </body>

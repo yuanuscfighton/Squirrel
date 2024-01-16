@@ -32,7 +32,10 @@
       changeWeather() {
         // 获取原来的isHot值
         const isHot = this.state.isHot;
-        // 📢注意: 状态(state)不可以直接更改，例如，this.state.isHot = !isHot <-- 错误的❌
+
+        // ⚠️注意：状态(state)不可以直接更改，例如，this.state.isHot = !isHot <-- 错误的❌
+
+        // ✅正确的写法✅
         this.setState({isHot: !isHot});
       }
 
