@@ -20,20 +20,15 @@
   <script type = "text/babel">
     // 第1步:创建组件
     class Weather extends React.Component {
-      constructor(props) { // 构造器里参数接什么，取决于new Weather那个人传了什么
+      constructor(props) {
         super(props);
         // 初始化状态
         this.state = {
-          isHot: true, // 将isHot状态值放在state里
+          isHot: true,
         }
       }
 
       render() {
-        console.log(this); // 打印出的是"Weather组件实例对象"
-        /*
-          打印结果：
-            Weather {props: {...}, refs: {...}, state: {...}, ... }
-         */
         return (
           // 读取(使用)状态state。这里的this指向组件实例对象
           // render中的this指向组件实例对象

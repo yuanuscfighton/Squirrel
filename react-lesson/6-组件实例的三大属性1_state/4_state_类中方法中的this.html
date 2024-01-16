@@ -3,7 +3,7 @@
 <head>
   <meta charset = "UTF-8">
   <!-- Create 2022/3/18 8:23 PM -->
-  <title>4_state_类中方法中的this</title>
+  <title>组件实例的三大属性：属性1——4_state_类中方法中的this</title>
 </head>
 <body>
   <!-- 准备好一个容器 -->
@@ -33,7 +33,7 @@
         console.log("this=", this);
       }
 
-      // ReferenceError: changeWeather is not defined
+      // ReferenceError: changeWeather is not defined → 需要通过实例调用changeWeather，即，this.changeWeather
       render() {
         return (
           <h2 onClick = {changeWeather}>今天天气很{this.state.isHot ? "炎热" : "凉爽"}</h2>

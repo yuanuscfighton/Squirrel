@@ -24,12 +24,14 @@
       render() {
         // Q: render是放在哪里的？
         // A: render是放在MyComponent这个类的原型对象上，供实例使用
+
         ////////////////////////////////////////////////////////////////////////
         // 验证1：render是放在MyComponent这个类的原型对象上
         // 在console上输入 MyComponent.prototype，找到了render
+
         ////////////////////////////////////////////////////////////////////////
-        // render()中的this是谁？
-        // this指的MyComponent组件的实例对象。（组件实例对象，一般指这个组件是类定义的）
+        // render()中的this是谁？打印结果：MyComponent{... ...}
+        // this指的是 MyComponent组件的实例对象，或者叫作 MyComponent组件的实例对象，一般指这个组件是类定义的。
         return <h2>我是用类定义的组件(适用于复杂组件的定义)</h2>
       }
     }
@@ -39,9 +41,9 @@
     // 当写了<MyComponent/>组件标签后，React帮我们new了一个MyComponent类的实例
     ReactDOM.render(<MyComponent/>, document.getElementById('test'));
 
-    // 执行了ReactDOM.render(<MyComponent/> ...) 之后，发生了什么？
+    // 问题：执行了ReactDOM.render(<MyComponent/> ...) 之后，发生了什么？
     // （1）React解析组件标签后，找到了MyComponent组件
-    // （2）发现组件是使用类的方式定义的，随后React new出来该类的实例，并通过该类的实例调用原型上的render()方法
+    // （2）发现组件是使用类的方式定义的，随后React会new出来该类(MyComponent)的实例，并通过该类的实例调用原型上的render()方法
     // （3）将render返回的虚拟DOM转为真实的DOM，随后呈现在页面中。
   </script>
 </body>

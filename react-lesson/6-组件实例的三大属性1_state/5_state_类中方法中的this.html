@@ -3,7 +3,7 @@
 <head>
   <meta charset = "UTF-8">
   <!-- Create 2022/3/18 8:26 PM -->
-  <title>5_state_类中方法中的this</title>
+  <title>组件实例的三大属性：属性1——5_state_类中方法中的this</title>
 </head>
 <body>
   <!-- 准备好一个容器 -->
@@ -28,16 +28,20 @@
       }
 
       changeWeather() {
+        // 总结：
         // changeWeather放在了Weather的原型对象上，供实例使用
         // 通过Weather实例调用changeWeather的时候，changeWeather中的this就是Weather实例
-        // （1）由于changeWeather是作为onClick的回调，所以不是通过Weather实例调用的，是直接调用。
+        // 但由于
+        // （1）changeWeather是作为onClick的回调，所以不是通过Weather实例调用的，是直接调用。
         // （2）类中的方法默认开启了局部严格模式
-        //    ===> 所以changeWeather中的this是undefined。
+        // 所以changeWeather中的this是undefined。
         // 【具体分析，见"复习/3_类中的方法this指向.html"】
         console.log("this=", this); // 打印出来this，this是undefined
       }
 
       render() {
+        // onClick={this.changeWeather} 这里并没有调用changeWeather函数，只是通过类的实例对象沿着原型链，找到了changeWeather
+        // 当你点击的时候，从堆中找到changeWeather 直接调用。→ 这里就不是Weather实例调用的changeWeather
         return (
           <h2 onClick = {this.changeWeather}>今天天气很{this.state.isHot ? "炎热" : "凉爽"}</h2>
         )
@@ -47,6 +51,9 @@
     // 第2步:渲染组件到页面
     ReactDOM.render(<Weather/>, document.getElementById('test'));
 
+    // 测试：尝试通过实例去调用changeWeather
+    const w = new Weather();
+    w.changeWeather(); // this指向Weather对象
   </script>
 </body>
 
