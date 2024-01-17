@@ -1,5 +1,5 @@
 import React from "react";
-import Count from "./components/Count";
+import Count from "./containers/Count";
 
 class App extends React.Component {
   render() {
@@ -7,7 +7,7 @@ class App extends React.Component {
       <div>
         <Count/>
       </div>
-    )
+    );
   }
 }
 
