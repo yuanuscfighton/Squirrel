@@ -24,27 +24,27 @@
       showLeftInputData = () => {
         console.log(this); // this就是Demo组件的实例对象
 
-        // refs: {input1: input}，此处的key是我们定义的input1，value就是ref当前所在的节点
+        // refs: {input1Ref: input}，此处的key是我们定义的"input1Ref"，value就是ref当前所在的节点
         // 组件内的标签可以定义ref属性来标识自己
 
-        // console.log(this.refs.input1); // <input type="text" placeholder="点击按钮提示数据">
-        const {input1} = this.refs;
-        alert(input1.value)
+        // console.log(this.refs.input1Ref); // <input type="text" placeholder="点击按钮提示数据">
+        const {input1Ref} = this.refs;
+        alert(input1Ref.value)
       }
 
       showRightInputData = () => {
-        const {input2} = this.refs;
-        alert(input2.value);
+        const {input2Ref} = this.refs;
+        alert(input2Ref.value);
       }
 
       render() {
         return (
           <div>
             {/* ref: key值是input1，value就是该ref所处的这个节点 */}
-            <input ref = "input1" type = "text" placeholder = "点击按钮提示数据"/>&nbsp;
+            <input ref = "input1Ref" type = "text" placeholder = "点击按钮提示数据"/>&nbsp;
             <button onClick = {this.showLeftInputData}>点我提示左侧的数据</button>
             &nbsp;
-            <input ref = "input2" onBlur = {this.showRightInputData} type = "text" placeholder = "失去焦点的时候提示数据"/>
+            <input ref = "input2Ref" onBlur = {this.showRightInputData} type = "text" placeholder = "失去焦点的时候提示数据"/>
           </div>
         )
       }

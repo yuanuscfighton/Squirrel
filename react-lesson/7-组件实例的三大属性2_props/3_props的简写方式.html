@@ -33,13 +33,15 @@
         console.log("constructor: 111", props);
       }
 
+      // 优化点：和类相关的东西，都写在 `class Xxx {}` 内部了
+      // 使用static关键字，将protoType和defaultProps放到类本身上
       // 对标签属性进行类型、必要性的限制
       static prototype = {
         // 限制name属性必须是string类型，且必须填写
-        name: React.PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
         // age必须是number类型，且不是必须传的
-        age: React.PropTypes.number,
-        grade: React.PropTypes.string,
+        age: PropTypes.number,
+        grade: PropTypes.string,
       }
 
       // 设置默认属性值
