@@ -1,6 +1,8 @@
 import React from 'react';
+
 // 获取store，用于保存redux中保存的状态
 import store from '../../redux/store';
+
 // 引入actionCreator，专门用于创建action对象
 import {createIncrementAction, createDecrementAction} from '../../redux/count_action';
 
@@ -10,7 +12,7 @@ export default class Count extends React.Component {
     // 获取选择的数值
     const {value} = this.selectNumber;
     // 通知redux加value,
-    // 注意📢: redux中的状态的变化，不会引起页面的更新.（redux只是管理状态，不负责刷新/更新页面）
+    // ⚠️注意: redux中的状态的变化，不会引起页面的更新.（redux只是管理状态，不负责刷新/更新页面）
     store.dispatch(createIncrementAction(value * 1));
   }
 
