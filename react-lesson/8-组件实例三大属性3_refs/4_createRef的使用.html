@@ -3,7 +3,7 @@
 <head>
   <meta charset = "UTF-8">
   <!-- Create 2022/3/24 1:45 PM -->
-  <title>2_回调函数形式的ref</title>
+  <title>4_createRef的使用</title>
 </head>
 <body>
   <!-- 准备好一个容器 -->
@@ -21,33 +21,19 @@
     // 第1步:创建组件
     class Demo extends React.Component {
 
-      showLeftInputData = () => {
-        console.log("this=", this);
-        const {xxx} = this;
-        alert(xxx.value);
-      }
+      // React.createRef调用后可以返回一个容器，该容器可以存储被ref所标识的节点.
+      // 该容器是"专人专用的"
+      myRef = React.createRef();
 
-      showRightInputData = () => {
-        const {input2} = this;
-        alert(input2.value);
+      showData = () => {
+        console.log(this.myRef); // 打印结果：current: input
       }
 
       render() {
         return (
-          <div>
-            {/*
-              （1）a就是当前ref的所处的节点
-              （2）this.xxx=a，表示把a放到组件实例自身上，然后起了一个名字叫xxx
-              （3）this指向: 这里是箭头函数，没有自己的this，于是向外找，找到render()，而render里的this是组件的实例对象
-             */}
-            <input ref = {(a) => {
-              this.xxx = a
-            }} type = "text" placeholder = "点击按钮提示数据"/>&nbsp;
-            <button onClick = {this.showLeftInputData}>点我提示左侧的数据</button>
-            &nbsp;
-            <input ref = {(currentNode) => {
-              this.input2 = currentNode;
-            }} onBlur = {this.showRightInputData} type = "text" placeholder = "失去焦点的时候提示数据"/>
+            <div>
+            <input ref = {this.myRef} type = "text" placeholder = "点击按钮提示数据"/>&nbsp;
+            <button onClick = {this.showData}>点我提示左侧的数据</button>
           </div>
         )
       }
