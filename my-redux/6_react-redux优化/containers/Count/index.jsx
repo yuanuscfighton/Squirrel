@@ -7,8 +7,6 @@ import {createDecrementAction, createIncrementAction, createIncrementAsyncAction
 // 最终版本
 const CountContainer = connect(
   state => ({count: state}),
-  // mapDispatchToProps的简写
-  // react-redux能帮我们自动dispatch
   {
     add: createIncrementAction,
     minus: createDecrementAction,

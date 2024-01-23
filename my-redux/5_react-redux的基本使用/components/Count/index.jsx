@@ -1,12 +1,18 @@
 import React from 'react';
 
-// 这是一个UI组件，不能有redux相关的东西
+/**
+ * 这是一个UI组件，不能有redux相关的东西
+ * 例如，不能导入 import {..., ...} from './../redux/count_action'
+ */
 export default class Count extends React.Component {
 
   increment = () => {
     // 获取选择的数值
     const {value} = this.selectNumber;
     this.props.add(value * 1);
+
+    /** 👇🏻下面这行也应该删除，不能看见任何redux的东西 */
+    // store.dispatch(createIncrementAction(value));
   }
 
   decrement = () => {
@@ -29,8 +35,9 @@ export default class Count extends React.Component {
   }
 
   render() {
-    // console.log('UI组件接收到的props是 ', this.props);
+    // console.log('UI组件接收到的props是：', this.props);
     // 输出 {store: {...}, count: -1, add: ƒ, minus: ƒ, addAsync: ƒ}
+
     return (
       <div>
         <h1>当前求和为: {this.props.count}</h1>

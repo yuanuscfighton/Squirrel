@@ -19,7 +19,7 @@ class Person extends Component {
     return (
       <div>
         <h2>我是Person组件</h2>
-        <h4>Count组件求和为:{this.props.sumXxx}</h4>
+        <h4>Count组件求和为：{this.props.sumXxx}</h4>
         <input ref = {c => this.nameNode = c} type = "text" placeholder = "输入名字"/>
         <input ref = {c => this.ageNode = c} type = "text" placeholder = "输入年龄"/>
         <button onClick = {this.addPerson}>添加</button>

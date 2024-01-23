@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import React from "react";
 import {createIncrementAction} from "../../redux/count_action";
 
-// step1
+// 第1步
 class Count extends React.Component {
 
   plus = () => {
@@ -20,7 +20,7 @@ class Count extends React.Component {
   }
 }
 
-// step2
+// 第2步
 export default connect(
   // 映射状态
   state => ({result: state}),
