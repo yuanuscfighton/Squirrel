@@ -20,6 +20,7 @@ const studentSlice = createSlice({
       // 参数1: state是以前的state，但这个state是一个代理对象，可以直接修改，没有变化的属性不需要写
       // state.name = '李四';
       state.name = action.payload;
+      console.log("action：" + action);
     },
     setAge(state, action) {
       // state.age = 28;
