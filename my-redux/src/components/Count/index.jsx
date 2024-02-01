@@ -1,43 +1,50 @@
-import React from "react";
-import store from "../../redux/store";
-import {DECREMENT, INCREMENT} from "../../redux/constants";
+import React from 'react';
 
+/**
+ * 这是一个UI组件，不能有redux相关的东西
+ * 例如，不能导入 import {..., ...} from './../redux/count_action'
+ */
 export default class Count extends React.Component {
 
   increment = () => {
+    // 获取选择的数值
     const {value} = this.selectNumber;
-    store.dispatch({type: INCREMENT, data: value * 1});
+    this.props.add(value * 1);
+
+    /** 👇🏻下面这行也应该删除，不能看见任何redux的东西 */
+    // store.dispatch(createIncrementAction(value));
   }
 
   decrement = () => {
+    // 获取选择的数值
     const {value} = this.selectNumber;
-    store.dispatch({type: DECREMENT, data: value * 1});
+    this.props.minus(value * 1);
   }
 
   incrementIfOdd = () => {
     const {value} = this.selectNumber;
-    const count = store.getState();
-    if (count % 2 !== 0) {
-      store.dispatch({type: INCREMENT, data: value * 1});
+    if (this.props.count % 2 !== 0) {
+      this.props.add(value * 1);
     }
   }
 
+  // 异步加
   incrementAsync = () => {
     const {value} = this.selectNumber;
-    setTimeout(() => {
-      store.dispatch({type: INCREMENT, data: value * 1});
-    }, 500);
+    this.props.addAsync(value * 1, 500);
   }
 
   render() {
+    // console.log('UI组件接收到的props是：', this.props);
+    // 输出 {store: {...}, count: -1, add: ƒ, minus: ƒ, addAsync: ƒ}
+
     return (
       <div>
-        <h1>当前求和为: {store.getState()}</h1>
+        <h1>当前求和为: {this.props.count}</h1>
         <select ref = {c => this.selectNumber = c}>
           <option value = {1}>1</option>
           <option value = {2}>2</option>
           <option value = {3}>3</option>
-          <option value = {4}>4</option>
         </select>&nbsp;
 
         <button onClick = {this.increment}>加1</button>
@@ -48,6 +55,6 @@ export default class Count extends React.Component {
         &nbsp;
         <button onClick = {this.incrementAsync}>异步加1</button>
       </div>
-    )
+    );
   }
 }

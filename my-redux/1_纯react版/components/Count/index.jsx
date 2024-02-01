@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * 版本1：纯react版
+ */
 export default class Count extends React.Component {
 
   state = {
@@ -27,7 +30,7 @@ export default class Count extends React.Component {
     });
   }
 
-  // 奇数加
+  // 当计算结果为奇数时，做加法
   incrementIfOdd = () => {
     const {value} = this.selectNumber;
     const {count} = this.state;
@@ -59,10 +62,8 @@ export default class Count extends React.Component {
           <option value = {3}>3</option>
         </select>&nbsp;
 
-        <button onClick = {this.increment}>加1</button>
-        &nbsp;
-        <button onClick = {this.decrement}>减1</button>
-        &nbsp;
+        <button onClick = {this.increment}>加1</button>&nbsp;
+        <button onClick = {this.decrement}>减1</button>&nbsp;
         <button onClick = {this.incrementIfOdd}>当前求和为奇数再加1</button>
         &nbsp;
         <button onClick = {this.incrementAsync}>异步加1</button>

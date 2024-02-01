@@ -32,10 +32,9 @@ function a(state) {  // a ==> mapStateToProps
   // 目的是传递状态
   // 🌰 return {n: 900}
 
-  return {count: store.getState()}
-  // 看到21:56
-  // https://www.bilibili.com/video/BV1wy4y1D7JT?p=105&spm_id_from=pageDriver&vd_source=e70a5337a4de735b7a790f67c359dcaa
-  // ❌ redux中保存的状态不能通过 store.getState() 获取，因为在App组件中，已经传入store对象了
+  // return {count: store.getState()}
+  // 👆🏻上面写法不对，❌ redux中保存的状态不能通过 store.getState() 获取，因为在App组件中，已经传入store对象了
+
   return {count: state}; // 从redux中拿状态
 }
 
@@ -51,6 +50,7 @@ function b(dispatch) {  // b ==> mapDispatchToProps
     // number是调用的地方传入的参数
     add: (number) => {
       // console.log("====>>> number:", number);
+
       // 通知redux执行加法
       dispatch(createIncrementAction(number));
     },

@@ -5,7 +5,9 @@ import {setSchoolName, setAddress} from "../redux/schoolSlice";
 
 export default function Component() {
 
-  // useSelector() 用来加载state中的数据
+  /**
+   * 读数据：useSelector() —— 用来加载state中的数据
+   */
   const student = useSelector(state => state.xuesheng);
   const school = useSelector(state => state.xuexiao);
 
@@ -13,7 +15,7 @@ export default function Component() {
   const dispatch = useDispatch();
 
   const setNameHandler = () => {
-    dispatch(setName("赵六"));
+    dispatch(setName("赵六")); // 获取action构建器，在studentSlice中定义的
   }
 
   function setAgeHandler() {

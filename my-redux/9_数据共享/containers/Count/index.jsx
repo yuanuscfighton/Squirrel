@@ -34,6 +34,7 @@ class Count extends React.Component {
     return (
       <div>
         <h2>我是Count组件</h2>
+        {/* 在Count组件中，读取总人数 */}
         <h4>当前求和为: {this.props.countXxx}，Person组件总人数为:{this.props.totalPersonNumXxx}</h4>
         <select ref = {c => this.selectNumber = c}>
           <option value = {1}>1</option>

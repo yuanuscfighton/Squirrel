@@ -4,7 +4,7 @@ import {createDecrementAction, createIncrementAction, createIncrementAsyncAction
 import React from "react";
 
 /**
- * 优化: 整合容器组件和UI组件到一个文件中
+ * 优化点：整合容器组件和UI组件到一个文件中
  */
 class Count extends React.Component {
   increment = () => {
