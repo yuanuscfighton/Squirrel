@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/1/24 10:13 -->
+  <title>hello_redux</title>
+</head>
+<body>
+  <div>
+    <button id = "sub">减少</button>
+    <span id = "countSpan">1</span>
+    <button id = "add">增加</button>
+    <button id = "add_N">增加N</button>
+  </div>
+  <script>
+    import * as Redux from "redux";
+
+    const subBtn = document.getElementById('sub');
+    const addBtn = document.getElementById('add');
+    const addNBtn = document.getElementById('add_N');
+    const countSpan = document.getElementById('countSpan');
+
+    let count = 1;
+
+    /**
+     * Redux使用步骤：
+     *    第1步：引入redux核心库
+     *
+     *    第2步：创建reducer整合函数
+     *
+     *    第3步：通过reducer对象创建store
+     *
+     *    第4步：对store中的state进行订阅
+     *
+     *    第5步：通过dispatch触发state的操作指令
+     */
+
+    // {count:1} —— 初始值对象
+    function reducer(preState = {count: 1}, action) {
+      /**
+       * 参数1：preState：之前的state，用preState生成新的state
+       * 参数2：action：是一个js对象，它里面会保存操作的信息
+       *    （1）type：表示操作的类型
+       *    （2）其它需要传递的参数，也可以在action中使用
+       *
+       * 现状的问题：
+       *    （1）如果state过于复杂，将会非常难以维护
+       *    （2）state每次操作的时候，都需要对其进行复制，然后再去修改
+       *    （3）switch-case后的常量，维护起来比较麻烦
+       */
+      switch (action.type) {
+        case 'ADD':
+          // 写...preState原因是，保留preState中的其它状态，只更新我们修改的状态的值
+          return {...preState, count: preState.count + 1};
+        case 'SUB':
+          return {...preState, count: preState.count - 1};
+        case 'ADD_N':
+          return {...preState, count: preState.count + action.payload}; // 加N，通过action中的payload传过来
+        default:
+          return preState;
+      }
+    }
+
+    const store = Redux.createStore(reducer);
+
+    store.subscribe(() => {
+      console.log(store.getState());
+      countSpan.innerText = store.getStore().count;
+    });
+
+    addBtn.addEventListener('click', () => {
+      store.dispatch({type: 'ADD'});
+    });
+
+    addNBtn.addEventListener('click', () => {
+      store.dispatch({type: 'ADD_N', payload: 5})
+    })
+
+    subBtn.addEventListener('click', () => {
+      store.dispatch({type: 'SUB'})
+    });
+
+  </script>
+</body>
+
+</html>
+
