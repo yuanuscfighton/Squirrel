@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/2/9 15:43 -->
+  <title>解构赋值</title>
+</head>
+<body>
+  <script>
+    // 1.数组的解构赋值
+    const STUDENT = ["张三", "李四", "王五", "赵六"];
+    const [s1, s2, s3, s4] = STUDENT;
+    console.log(s1);
+    console.log(s2);
+    console.log(s3);
+    console.log(s4);
+
+
+    // 2.对象的解构赋值
+    const Person = {
+      name: '小明',
+      age: 12,
+      action: function () {
+        console.log('写作业');
+      }
+    }
+
+    const {name, age, action} = Person;
+    console.log(name);
+    console.log(age);
+    action();
+
+  </script>
+</body>
+
+</html>
