@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/2/9 14:45 -->
+  <title>let实践案例</title>
+  <style>
+    .item {
+      width: 100px;
+      height: 50px;
+      border-style: solid;
+      border-color: blue;
+      border-width: 2px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class = "container">
+    <h2 class = "page-header">点击切换颜色</h2>
+    <div class = "item"></div>
+    <div class = "item"></div>
+    <div class = "item"></div>
+  </div>
+  <script>
+    // 获取dic元素
+    let items = document.getElementsByClassName('item');
+    for (var i = 0; i < items.length; i++) {
+      items[i].onclick = function () {
+        // 修改当前元素的背景颜色
+        items[i].style.background = 'pink';
+      }
+    }
+
+    /*
+      ❌ 报错信息：Uncaught TypeError: Cannot read properties of undefined (reading 'style') at items.<computed>.onclick
+
+      背景颜色不改变的原因：全局变量i有问题（即，由于var没有块级作用域，i变量存在于全局作用域中），for循环遍历后，相当于，
+        {
+          var i = 0;
+        }
+        {
+          var i = 1;
+        }
+        {
+          var i = 2;
+        }
+        console.log(i); // 打印输出3，所以就报错了
+     */
+  </script>
+</body>
+
+</html>

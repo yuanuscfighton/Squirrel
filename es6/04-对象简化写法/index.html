@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/2/9 15:52 -->
+  <title>对象简化写法</title>
+</head>
+<body>
+  <script>
+    // es6允许大括号里面，直接写入变量和函数，作为对象的属性和方法
+    const name = "尚硅谷";
+    const change = function () {
+      console.log("调用了change方法");
+    }
+
+    const obj = {
+      name, // 属性名和值名字一样，可以省略
+      change,
+      foo: function () {
+        console.log('调用foo方法');
+      },
+      foo1() {
+        console.log('调用foo1方法');
+      }
+    }
+
+  </script>
+</body>
+
+</html>

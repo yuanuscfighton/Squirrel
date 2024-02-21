@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/2/9 14:45 -->
+  <title>let声明变量，及声明特性</title>
+</head>
+<body>
+  <script>
+    // 1.变量不能重复声明
+    // let stu = "小明";
+    // let stu = "小红";
+    // ⚠️ 报错信息：let.html:12 Uncaught SyntaxError: Identifier 'stu' has already been declared
+
+
+    // 2.块级作用域
+    {
+      let person = "张三"; // let声明的变量只在代码块中有效，代码块以外就读取不到了
+    }
+    console.log(person);
+    // ⚠️ 错误信息：Uncaught ReferenceError: stu is not defined。同理，if else while for 也是不行
+
+
+    // 3.不存在变量提升
+    console.log(car);
+    let cat = "奔驰";
+    // ⚠️ 错误信息：Uncaught ReferenceError: car is not defined
+
+
+    // 4.不影响作用域链
+    {
+      let school = "尚硅谷";
+      function fn() {
+        console.log(school); // fn函数作用域中没有school，就向上一层作用域中查找
+      }
+      fn(); // 打印出尚硅谷
+    }
+
+  </script>
+</body>
+
+</html>
