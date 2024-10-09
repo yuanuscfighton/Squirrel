@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/19 09:22 -->
+  <title>生成器函数声明与调用</title>
+</head>
+<body>
+
+  <script>
+    // 生成器其实就是一个特殊的函数，用于异步编程，以前是用 纯回调函数
+
+    function* gen() {
+      // console.log("hello generator");
+
+      console.log("1111");
+      yield 'line1'; // yield 相当于 函数代码的分隔符
+
+      console.log("2222");
+      yield 'line2';
+
+      console.log("3333");
+      yield 'line3';
+
+      console.log("4444");
+    }
+
+    let iterator = gen();
+    console.log(iterator);
+    for (let v of gen()) {
+      console.log(v); // 每次调用的返回结果是 yield 后面的表达式
+    }
+
+
+    function* gen1() {
+      yield 'line1';
+      yield 'line2';
+      yield 'line3';
+    }
+
+    let iterator1 = gen1();
+    console.log(iterator1.next()); // 输出一个对象，{value: 'line1', done: false}
+    console.log(iterator1.next()); // 输出一个对象，{value: 'line2', done: false}
+    console.log(iterator1.next()); // 输出一个对象，{value: 'line3', done: false}
+    console.log(iterator1.next()); // 输出一个对象，{value: undefined, done: true}
+
+  </script>
+</body>
+
+</html>

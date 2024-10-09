@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/20 17:21 -->
+  <title>3_Promise.prototype.then方法</title>
+</head>
+<body>
+  <script>
+
+    // 1.创建 Promise 对象
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("用户数据");
+        // reject("出错啦");
+      }, 2000);
+    });
+
+    // 调用 then 方法，then 方法的返回结果也是 Promise 对象，这个 Promise 对象状态由回调函数的执行结果决定
+    const result = p.then(
+      (value) => {
+        console.log(value);
+      },
+      (reason) => {
+        console.warn(reason);
+      }
+    );
+    console.log(result);
+
+
+    /////////////////////////////////////////////////////////////////////////////
+    // 1.如果回调函数中返回的结果是一个非 Promise 类型的数据，状态为成功，返回值就是这个 Promise 对象的成功的值
+    const result1 = p.then(
+      (value) => {
+        console.log(value);
+        // 返回非 Promise 类型
+        return 123;
+      },
+      (reason) => {
+        console.warn(reason);
+      }
+    );
+    console.log("line43: " + result1);
+
+
+    /////////////////////////////////////////////////////////////////////////////
+    // 2.如果回调函数中返回的结果是 Promise 类型的属性，则内部那个 Promise 返回状态就决定 then 返回的 Promise 对象的状态
+    const result2 = p.then(
+      (value) => {
+        console.log(value);
+        // 返回 Promise 类型
+        return new Promise(
+          (resolve, reject) => {
+            resolve('OK');
+            // reject("error");
+          });
+      },
+      (reason) => {
+        console.warn(reason);
+      }
+    );
+    console.log("line62: " + result2);
+
+
+    /////////////////////////////////////////////////////////////////////////////
+    // 3.抛出错误
+    const result3 = p.then(
+      (value) => {
+        console.log(value);
+        // throw new Error('出错啦!');
+        throw '出错啦~';
+      },
+      (reason) => {
+        console.warn(reason);
+      });
+    console.log("line76: " + result3);
+
+
+    /////////////////////////////////////////////////////////////////////////////
+    // 链式调用
+    p.then((resolve, reject) => {
+
+    })
+      .then((resolve, reject) => {
+
+      });
+  </script>
+</body>
+
+</html>

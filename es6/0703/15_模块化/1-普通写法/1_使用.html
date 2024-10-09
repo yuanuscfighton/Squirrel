@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/7/3 13:21 -->
+  <title>1_es6 模块化的使用</title>
+</head>
+<body>
+  <script type = "module">
+    // 模块化是指将一个大的程序文件，拆分成很多小的文件，然后将小的文件组合起来
+    // 模块化的优点: 防止命名冲突、代码复用、高维护性
+
+    // es6 模块化语法
+    // export 命令用于 规定模块的对外接口
+    // import 命令用于 输入其它模块提供的功能
+
+
+    // 引入 m1.js 模块内容
+    import * as m1 from './m1.js';
+
+    // 引入 m2.js 模块内容
+    import * as m2 from './m2.js';
+
+    // 引入 m3.js 模块内容
+    import * as m3 from "./m3.js";
+
+    console.log(m1);
+    console.log(m2);
+    m3.default.change();
+  </script>
+</body>
+
+</html>

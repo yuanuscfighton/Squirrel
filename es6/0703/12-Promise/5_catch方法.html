@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/21 17:04 -->
+  <title>5_catch方法</title>
+</head>
+<body>
+  <script>
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("出错啦~"); // 设置 p 对象的状态为失败，并且设置失败的值
+      });
+    });
+
+    p.catch(function (reason) {
+      console.warn(reason);
+    })
+  </script>
+</body>
+
+</html>

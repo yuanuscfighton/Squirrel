@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/7/4 09:57 -->
+  <title>2_引入模块数据</title>
+</head>
+<body>
+  <script>
+
+    // 1.解构赋值形式
+    import {school, teach} from "./m1";
+
+    console.log(school);
+    console.log(teach);
+
+    import {school as guigu, findJob} from "./m2";
+
+    console.log(guigu, findJob);
+
+    import {default as m3} from './m3';
+
+    console.log(m3);
+
+
+    // 2.简便形式，只能用于默认暴露
+    import m31 from './m3';
+
+    console.log(m31);
+  </script>
+</body>
+
+</html>

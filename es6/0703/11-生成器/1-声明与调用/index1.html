@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/19 09:22 -->
+  <title>生成器函数参数</title>
+</head>
+<body>
+
+  <script>
+    function* gen() {
+      yield 'line1';
+      yield 'line2';
+      yield 'line3';
+    }
+
+    // 执行获取迭代器对象
+    let iterator = gen();
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+  </script>
+</body>
+
+</html>

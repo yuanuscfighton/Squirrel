@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/21 17:44 -->
+  <title>1_class介绍</title>
+</head>
+<body>
+  <script>
+
+    /************ es5写法 ***********/
+    // 手机，通过构造函数实进行例化
+    function Phone(brand, price) {
+      this.brand = brand;
+      this.price = price;
+    }
+
+    // 添加方法
+    Phone.prototype.call = function () {
+      console.log("打电话~");
+    }
+
+    // 实例化对象
+    const HUAWEI = new Phone("华为", 5999);
+    HUAWEI.call();
+    console.log(HUAWEI);
+
+    ////////////////////////////////////////
+    ////////////////////////////////////////
+    class Shouji {
+      // 构造方法
+      constructor(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+
+      // 定义一个方法，必须使用这种语法，不能使用 es5 的对象完整形式
+      call() {
+        console.log("用手机打电话");
+      }
+    }
+
+    const onePlus = new Shouji("一加", 1999);
+    console.log(onePlus);
+  </script>
+</body>
+
+</html>

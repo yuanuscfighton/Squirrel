@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/7/3 12:54 -->
+  <title>5_get和set</title>
+</head>
+<body>
+  <script>
+
+    // get 和 set
+    class Phone {
+      // 使用场景，对动态属性进行封装，当这个变量是随着数据变化而变化的
+      get price() {
+        console.log("价格属性被读取了...");
+        return 20;
+      }
+
+      // 使用场景，可以更方便校验数据是否合法
+      set price(val) {
+        console.log("价格属性被修改了...");
+      }
+    }
+
+    let s = new Phone();
+    console.log(s.price);
+    s.price = 100;
+
+  </script>
+</body>
+
+</html>

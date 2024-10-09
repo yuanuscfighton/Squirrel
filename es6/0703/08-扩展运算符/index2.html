@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/18 09:23 -->
+  <title>08-扩展运算符应用</title>
+</head>
+<body>
+  <script>
+    // 1.数组的合并
+    const task1 = ['task1', 'task2', 'task3'];
+    const task2 = ['task11', 'task12'];
+    console.log(...task1, ...task2); // ['task1', 'task2', 'task3', 'task11', 'task12']
+
+
+    // 2.数组的克隆，浅拷贝
+    const arr1 = ['A', 'B', 'C'];
+    const arr2 = [...arr1];
+    console.log(arr2);
+
+
+    // 3.将伪数组转为真正的数组
+    const divs = document.querySelectorAll('div');
+    const divsArr = [...divs];
+    console.log(divsArr); // 真数组，map、filter 等方法都可以使用了
+  </script>
+</body>
+
+</html>
