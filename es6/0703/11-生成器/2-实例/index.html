@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/7/2 09:57 -->
+  <title>生成器函数实例</title>
+</head>
+<body>
+  <script>
+
+    /********************** 原始写法 *********************/
+
+    // 1秒后控制台输出 111，2秒后输出 222，3秒后输出 333
+    setTimeout(() => {
+      console.log(111);
+      setTimeout(() => {
+        console.log(222);
+        setTimeout(() => {
+          console.log(333);
+        }, 3000);
+      }, 2000);
+    }, 1000);
+
+
+    /********************** 使用: 生成器函数 *********************/
+
+    function one() {
+      setTimeout(() => {
+        console.log("aaa");
+        iterator.next();
+      }, 1000);
+    }
+
+    function two() {
+      setTimeout(() => {
+        console.log("bbb");
+        iterator.next();
+      }, 2000);
+    }
+
+    function three() {
+      setTimeout(() => {
+        console.log("ccc");
+        iterator.next();
+      }, 3000);
+    }
+
+    function* gen() {
+      yield one()
+      yield two()
+      yield three()
+    }
+
+    // 调用生成器函数
+    let iterator = gen();
+    iterator.next();
+  </script>
+</body>
+
+</html>

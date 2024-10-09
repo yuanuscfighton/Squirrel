@@ -23,10 +23,10 @@
     <div class = "item"></div>
   </div>
   <script>
-    // 获取dic元素
+    // 获取 div 元素
     let items = document.getElementsByClassName('item');
     for (var i = 0; i < items.length; i++) {
-      items[i].onclick = function () {
+      items[i].onclick = function () { // 当点击的时候，函数里找不到 i，于是就向外层作用域去找，即，在 window 作用域中去找，发现 i 是3
         // 修改当前元素的背景颜色
         items[i].style.background = 'pink';
       }
@@ -35,7 +35,7 @@
     /*
       ❌ 报错信息：Uncaught TypeError: Cannot read properties of undefined (reading 'style') at items.<computed>.onclick
 
-      背景颜色不改变的原因：全局变量i有问题（即，由于var没有块级作用域，i变量存在于全局作用域中），for循环遍历后，相当于，
+      背景颜色不改变的原因：全局变量i有问题（即，由于var没有块级作用域，i变量存在于全局作用域中），for循环遍历后 i 已经变成3了，这个过程相当于，
         {
           var i = 0;
         }
@@ -45,8 +45,37 @@
         {
           var i = 2;
         }
-        console.log(i); // 打印输出3，所以就报错了
+        console.log(window.i); // 打印输出3，所以就报错了
      */
+
+
+    ///// ✅ 正确写法：
+    for (let i = 0; i < items.length; i++) {
+      items[i].onclick = function () { // 当点击的时候，函数里找不到 i，于是就向外层作用域去找，即，在 window 作用域中去找，发现 i 是3
+        // 修改当前元素的背景颜色
+        items[i].style.background = 'pink';
+      }
+    }
+
+    /*
+        // for 循环后，相当于是，在3个代码块中声明了 i，它们之间互不影响
+        {
+          let i = 0; // 这个 i 只在这个代码块里生效
+          // 当真实触发 onClick 回调函数的时候，发现 i在当前函数作用域里没有，于是就向外层作用域去寻找，发现 i=0，
+          items[i].onclick = function () {
+              // 修改当前元素的背景颜色
+              items[i].style.background = 'pink';
+          }
+        }
+
+        {
+          let i = 1;
+        }
+
+        {
+          let i = 2;
+        }
+    */
   </script>
 </body>
 

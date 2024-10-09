@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/19 09:22 -->
+  <title>生成器函数参数</title>
+</head>
+<body>
+
+  <script>
+    function* gen() {
+      let one = yield 'line1';
+      console.log(one);
+
+      let two = yield 'line2';
+      console.log(two);
+
+      let three = yield 'line3';
+      console.log(three);
+    }
+
+    let iterator = gen("AAA");
+    console.log(iterator.next()); // 输出一个对象，{value: 'line1', done: false}
+
+    // next 方法可以传入实参
+    // 第2次调用 next 方法传入的参数将作为第1个 yield 语句整体返回的结果
+    console.log(iterator.next("BBB")); // 输出一个对象，{value: 'line2', done: false}
+
+    // 第3次调用 next 方法传入的参数将作为第2个 yield 语句整体返回的结果
+    console.log(iterator.next("CCC")); // 输出一个对象，{value: 'line3', done: false}
+
+    // 第4次调用 next 方法传入的参数将作为第3个 yield 语句整体返回的结果
+    console.log(iterator.next("DDD")); // 输出一个对象，{value: undefined, done: true}
+
+  </script>
+</body>
+
+</html>

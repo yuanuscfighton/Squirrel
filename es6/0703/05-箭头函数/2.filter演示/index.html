@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/2/20 23:45 -->
+  <title>箭头函数在filter中的应用</title>
+</head>
+<body>
+  <script>
+    const arr = [1, 6, 9, 10, 100, 25];
+    // const result1 = arr.filter(function (item){
+    //   return item % 2 === 0;
+    // })
+
+    const result2 = arr.filter(item => item % 2 === 0);
+    console.log(result2);
+
+    // 小结：箭头函数适合与this无关的回调，例如，定时器、数组方法的回调
+    // 箭头函数不适合与this有关的回调，例如，事件回调、对象的方法
+
+    /*
+      说明 为什么不适合“事件回调”？例如下面代码，listener 不应该换成 箭头函数
+      如果 listener 改成 箭头函数了，listener 函数中的 this 不再指向“事件源 ad”了，而是指向外层作用域中的 this 值
+          let ad = document.getElementById('ad');
+          const listener = function () {
+            setTimeout(() => {
+              this.style.background = "pink";
+            }, 2000)
+          }
+
+          // 事件绑定
+          ad.addEventListener("click", listener);
+     */
+
+    /*
+      说明 为什么不适合“对象的方法”？例如下面代码，
+      {
+        name: '张三',
+        getName: function() {
+           this.name; // this 指向 { ... } 这个对象
+        },
+        getName1: () => {
+           this.name; // 改成箭头函数后，this 指向 { ... } 外层作用域中的 this 了
+        },
+      }
+     */
+
+
+  </script>
+</body>
+</html>

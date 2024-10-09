@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/18 09:39 -->
+  <title>迭代器</title>
+</head>
+<body>
+  <script>
+    const tasks = ['a', 'b', 'c', 'd'];
+
+    // 使用 for...of 遍历数组
+    for (let v of tasks) {
+      console.log(v); // v 保存的是键名
+    }
+
+    let iterator = tasks[Symbol.iterator]();
+    // 调用 next 方法
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+    /*
+      工作原理：
+         1.创建一个指针对象，指向当前数据结构的起始位置
+           a. 由 Symbol.iterator() 创建对象
+         2.第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员
+         3.然后不断调用 next 方法，指针一直向后移动，直到指向最后一个成员
+         4.每调用 next 方法，就会返回一个包含 value 和 done 属性的对象
+     */
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/18 09:42 -->
+  <title>自定义遍历数据</title>
+</head>
+<body>
+  <script>
+
+    // 迭代器使用场景：需要自定义遍历数据的时候
+
+    // 需求：遍历 taskObj 对象中的 details 数组中的元素
+
+    const taskObj = {
+      name: '任务1',
+      details: [
+        'a', 'b', 'c', 'd'
+      ],
+
+      /*
+         ❌ 错误1：Result of the Symbol.iterator method is not an object，方法有了，但没有返回值。
+          即，工作原理1：需要创建一个指针对象，指向当前数据结构的起始位置
+            [Symbol.iterator]() {
+                // TODO: 需要加上 return {} 代码
+            }
+      */
+
+      /*
+       ❌ 错误2：undefined is not a function，指针对象中有个 next 方法，但👇🏻这里没有
+          即，工作原理2：第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员
+             工作原理3：接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员
+            [Symbol.iterator]() {
+                return {};
+                // TODO: 需要加上 next: function() { ... }
+            }
+       */
+
+      /*
+       ❌ 错误3：Iterator result undefined is not an object，next方法返回的是一个 undefined
+          即，工作原理4：每调用 next 方法返回一个包含 value 和 done 属性的对象
+            [Symbol.iterator]() {
+                return {
+                    next: function() {
+                        // TODO: 需要加上 return { value: "xxx", done: false };
+                    }
+                };
+            }
+       */
+
+      /*
+        ❌ 错误4：一直在输出结果，因为 done 属性的值是 false
+            [Symbol.iterator]() {
+                return {
+                    next: function() {
+                        return {value: 'abc', done: false}; // false表示没有结束
+                    }
+                };
+            }
+       */
+
+      [Symbol.iterator]() { // 实现了对一个 对象 的遍历
+        // 索引变量
+        let index = 0;
+        let _this = this;
+        return {  // 因为 this 是在 这个对象中使用，即 { line66 ~ line77 这个对象 }，所以需要在 line59 保存下 this
+          next: function () {
+            // 根据 index 决定返回结果
+            if (index < _this.details.length) {
+              const result = {value: _this.details[index], done: false};
+              index++; // 下标自增
+              return result;
+            } else {
+              return {value: undefined, done: true};
+            }
+          }
+        }
+      }
+    }
+
+    // 想使用 for...of 遍历 taskObj 对象，每次返回的结果是 taskObj 对象中的 details 属性的值
+    for (let v of taskObj) {
+      console.log(v);
+    }
+
+    // 虽然 taskObj.details 也可以直接遍历数组中的元素，但不符合面向对象思想
+
+  </script>
+</body>
+</html>

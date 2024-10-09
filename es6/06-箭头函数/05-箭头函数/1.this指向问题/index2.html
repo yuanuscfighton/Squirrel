@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/2/18 22:16 -->
+  <title>箭头函数的实战与应用场景</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background: #97d2ff;
+    }
+  </style>
+</head>
+<body>
+  <div id = "ad"></div>
+  <script>
+    // 需求1：点击div 2s后，方块颜色变成粉色
+
+    // 获取元素
+    let ad = document.getElementById('ad');
+
+    // 绑定事件
+    ad.addEventListener("click", function () {
+      // 解决方案1：在外层保存 this 的值
+      let _this = this; // 把外层 函数作用域下的 this 保存到 _this 变量中
+
+      // 定时器
+      setTimeout(function () {
+        // 等 setTimeout 中内部的函数在调用时，在当前作用域下找不到 _this，就向外层作用域去找
+        console.log(_this); // 打印输出：<div id="ad" style="background: pink;"></div>
+        _this.style.background = "pink";
+      }, 2000)
+    })
+  </script>
+</body>
+</html>

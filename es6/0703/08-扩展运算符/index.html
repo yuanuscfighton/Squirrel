@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/18 09:23 -->
+  <title>08-扩展运算符</title>
+</head>
+<body>
+  <script>
+    // [...] 扩展运算符能将「数组」转换为 逗号分隔的「参数序列」
+    // 声明一个数组 ...
+    const tasks = ['task1', 'task2', 'task3'];
+
+    // 声明一个函数
+    function foo() {
+      console.log(arguments);
+    }
+
+    foo(...tasks);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <!-- Create 2024/3/18 09:15 -->
+  <title>rest参数</title>
+</head>
+<body>
+  <script>
+    // es6 引入rest参数，用于获取函数的实参，用来代替arguments
+
+    // es5 获取实参的方式
+    function foo1() {
+      console.log(arguments);
+    }
+    foo1("张三", "李四", "12345");
+
+
+    // es6 rest参数
+    function foo2(...args) {
+      console.log(args); // 这里是个数组，那么就可以使用数组的一些api方法
+    }
+    foo2("王五", "赵六", "abc");
+
+    // rest参数必须放到参数最后
+    function foo3(a, b, ...args) {
+      console.log(args);
+    }
+
+  </script>
+</body>
+
+</html>

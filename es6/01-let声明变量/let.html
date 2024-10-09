@@ -16,9 +16,11 @@
     // 2.块级作用域
     {
       let person = "张三"; // let声明的变量只在代码块中有效，代码块以外就读取不到了
+      console.log(person);
     }
     console.log(person);
     // ⚠️ 错误信息：Uncaught ReferenceError: stu is not defined。同理，if else while for 也是不行
+    // 同理，在 if - else、while、for 中也有块级作用域
 
 
     // 3.不存在变量提升
