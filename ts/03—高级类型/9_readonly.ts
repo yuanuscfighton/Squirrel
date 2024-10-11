@@ -12,13 +12,17 @@ class Person {
 
     // 只读属性
     readonly age: number = 19;
+    // 只要是 readonly 来修饰的属性，必须手动提供明确的类型
+    // readonly name = "张三"
 
-    constructor(age: number) {
+    constructor(age: number, name: string) {
         this.age = age;
+        // Type 'string' is not assignable to type '"张三"'
+        // this.name = name
     }
 }
 
-const p = new Person(30);
+const p = new Person(30, "李四");
 console.log(p.age);
 
 
@@ -26,6 +30,7 @@ console.log(p.age);
 ////////////////////////////////////////////////////////////
 
 interface IPerson {
+    // 接口 表示的对象类型，也可以使用 readOnly
     readonly name: string;
 }
 

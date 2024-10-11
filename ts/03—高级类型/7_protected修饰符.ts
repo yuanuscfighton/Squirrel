@@ -9,13 +9,15 @@ class Animal {
     }
 
     foo() {
-
+        // 在本类的其它方法中可见
+        this.eat();
     }
 }
 
 class Dog extends Animal {
     move() {
         console.log("走两步");
+        // 在子类中可见
         this.eat();
     }
 }

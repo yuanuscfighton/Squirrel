@@ -9,7 +9,7 @@ class Animal {
     }
 
     foo() {
-
+        this.__eat__();
     }
 }
 
