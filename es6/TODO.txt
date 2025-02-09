@@ -1,0 +1,7 @@
+Promise：
+https://www.bilibili.com/video/BV1Tm4y1h7SY/?spm_id_from=333.337.search-card.all.click&vd_source=e70a5337a4de735b7a790f67c359dcaa
+https://www.bilibili.com/video/BV1x84y1g7ns/?spm_id_from=333.337.search-card.all.click&vd_source=e70a5337a4de735b7a790f67c359dcaa
+https://www.bilibili.com/video/BV1VL411h72F/?spm_id_from=333.337.search-card.all.click&vd_source=e70a5337a4de735b7a790f67c359dcaa
+
+ajax/promise
+https://www.bilibili.com/video/BV1MN411y7pw?spm_id_from=333.788.videopod.episodes&vd_source=e70a5337a4de735b7a790f67c359dcaa&p=47
